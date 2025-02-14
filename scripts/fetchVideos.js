@@ -8,7 +8,7 @@ const frontEndCourses = [
 ];
 
 
-const python = document.querySelector("#react")
+const python = document.querySelector("#React")
 const javaScript = document.querySelector("#JavaScript")
 const htmlCss = document.querySelector("#htmlCss")
 

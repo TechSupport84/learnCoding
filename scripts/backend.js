@@ -7,44 +7,35 @@ const backendCourses = [
     { id: 6, name: "C#", description: "Backend programming with C#", url: "https://www.youtube.com/embed/XluZzsulPqs", support: 5.99 },
 ];
 
+const pythonId = document.querySelector("#Python");
+const mongo = document.querySelector("#Mongodb");
 
-const pythonId = document.querySelector("#python")
-const mongo = document.querySelector("#mongodb")
+function handleCourseSelection(courseName, headingText) {
+    let filteredCourses = backendCourses.filter(course => course.name.includes(courseName));
+    backEndVideo(filteredCourses);
 
-pythonId.addEventListener("click", ()=>{
-    let pythoncourse = backendCourses.filter(course => course.name.includes("Python"))
-    backEndVideo(pythoncourse)
-    let p = document.createElement("span")
-    p.innerHTML  = `<h1 class ="label">Python Courses </h1>`
-    let title = document.querySelector(".title-card")
-    title.innerHTML = " "
-    title.append(p) 
-})
+    let title = document.querySelector(".title-card");
+    title.innerHTML = `<h1 class="label">${headingText}</h1>`;
+}
 
+pythonId.addEventListener("click", () => handleCourseSelection("Python", "Python Courses"));
+mongo.addEventListener("click", () => handleCourseSelection("MongoDB", "MongoDB Courses"));
 
-mongo.addEventListener("click", ()=>{
-    let mongodb = backendCourses.filter(course => course.name.includes("MongoDB"))
-    backEndVideo(mongodb)
-    let p = document.createElement("span")
-    p.innerHTML  = `<h1 class ="label">Python Courses </h1>`
-    let title = document.querySelector(".title-card")
-    title.innerHTML = " "
-    title.append(p) 
-})
 backEndVideo(backendCourses);
 
 function backEndVideo(data) {
     const container = document.querySelector(".video-backend");
     if (!container) {
-        console.error("Error: .video-container not found in the DOM!");
+        console.error("Error: .video-backend not found in the DOM!");
         return;
     }
 
-    container.innerHTML = ""; 
+    container.innerHTML = "";
 
     data.forEach(course => {
         let card = document.createElement("section");
         card.classList.add("video-card");
+
         let name = document.createElement("h1");
         name.textContent = course.name;
 
@@ -60,71 +51,57 @@ function backEndVideo(data) {
         video.setAttribute("frameborder", "0");
         video.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
         video.allowFullscreen = true;
-    
-        let div = document.createElement("div")
-            div.classList.add("like-btn")
 
+        let div = document.createElement("div");
+        div.classList.add("like-btn");
 
-            let support = document.createElement("button");
+        let support = document.createElement("button");
+        support.classList.add("support-btn");
 
-            let heartIcon = document.createElement("i");
-            let isLiked = localStorage.getItem("isLiked") === "true";
-            heartIcon.classList.add(isLiked ? "fas" : "far", "fa-heart");
-            
-            support.appendChild(heartIcon);
-            
-            let likeCount = document.createElement("span");
-            likeCount.textContent = ` ${getLikeCount()}`;
-            support.appendChild(likeCount);
-            
-            support.classList.add("support-btn");
-            
-            support.addEventListener("click", function () {
-                let currentCount = getLikeCount();
-                let isLikedNow = localStorage.getItem("isLiked") === "true";
-            
-                if (isLikedNow) {
-                    localStorage.setItem("likeCount", currentCount - 1);
-                    localStorage.setItem("isLiked", "false");
-                    heartIcon.classList.replace("fas", "far");
-                } else {
-                    localStorage.setItem("likeCount", currentCount + 1);
-                    localStorage.setItem("isLiked", "true");
-                    heartIcon.classList.replace("far", "fas");
-                }
-            
-                likeCount.textContent = ` ${getLikeCount()}`;
-            });
-            
-            function getLikeCount() {
-                return parseInt(localStorage.getItem("likeCount")) || 0;
+        let heartIcon = document.createElement("i");
+        let isLiked = localStorage.getItem(`isLiked-${course.id}`) === "true";
+        heartIcon.classList.add(isLiked ? "fas" : "far", "fa-heart");
+        
+        support.appendChild(heartIcon);
+
+        let likeCount = document.createElement("span");
+        likeCount.textContent = ` ${getLikeCount(course.id)}`;
+        support.appendChild(likeCount);
+
+        support.addEventListener("click", function () {
+            let currentCount = getLikeCount(course.id);
+            let isLikedNow = localStorage.getItem(`isLiked-${course.id}`) === "true";
+
+            if (isLikedNow) {
+                localStorage.setItem(`likeCount-${course.id}`, currentCount - 1);
+                localStorage.setItem(`isLiked-${course.id}`, "false");
+                heartIcon.classList.replace("fas", "far");
+            } else {
+                localStorage.setItem(`likeCount-${course.id}`, currentCount + 1);
+                localStorage.setItem(`isLiked-${course.id}`, "true");
+                heartIcon.classList.replace("far", "fas");
             }
-            
 
+            likeCount.textContent = ` ${getLikeCount(course.id)}`;
+        });
 
-        let comment  = document.createElement("button")
-        comment.classList.add("comment")
-        let commentIcon = document.createElement("i")
-        commentIcon.classList.add("far", "fa-comment")
-        comment.appendChild(commentIcon)
+        function getLikeCount(courseId) {
+            return parseInt(localStorage.getItem(`likeCount-${courseId}`)) || 0;
+        }
 
+        let comment = document.createElement("button");
+        comment.classList.add("comment");
+        let commentIcon = document.createElement("i");
+        commentIcon.classList.add("far", "fa-comment");
+        comment.appendChild(commentIcon);
 
-    
         card.appendChild(name);
         card.appendChild(description);
         card.appendChild(video);
-        card.appendChild(div)
+        card.appendChild(div);
         div.appendChild(support);
-        div.appendChild(comment)
+        div.appendChild(comment);
 
         container.appendChild(card);
-
-    
-
-
-
-
     });
-
-
 }
