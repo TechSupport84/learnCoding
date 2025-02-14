@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="../css/NavBar.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&family=Verdana&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" 
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <nav class="navigation">
+            <div class="nav-container">
+                <a href="../index.html" class="brand">LearnCoding</a>
+                <div class="nav-toggle" id="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="nav-links" id="nav-links">
+                    <ul class="primary-nav">
+                        <li><a href="#">Html &amp;&amp; Css</a></li>
+                        <li><a href="#">React</a></li>
+                        <li><a href="#">Javascript</a></li>
+                        <li><a href="#">Python</a></li>
+                        <li><a href="#">Mongodb</a></li>
+                    </ul>
+                    <ul class="user-nav">
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="#">Signup</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="login-container">
+
+            <h2>Register</h2>
+            <form method="post">
+            <input type="text" id="full-name" placeholder="Full Name">
+            <input type="email" id="email" placeholder="Email">
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <input type="password" id="confirm-password" placeholder="Confirm Password">
+            <p class="error" id="error-message"></p>
+            <button onclick="register()">Register</button>
+            <form method="post">
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>LearnCoding offers high-quality tutorials on web and mobile development.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Html & Css</a></li>
+                    <li><a href="#">Python</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                    <li><a href="../utils/privacy-policy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://www.jeancy24Sur.com"><i class="fas fa-globe"></i></a>
+                    <a href="https://www.facebook.com/jeancy24Sur.com24/"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/learnCodin49237"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/jeancy-mpoyi002/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/TechSupport84/learnCoding"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 LearnCoding | <a href="../utils/privacy-policy.html">Privacy Policy</a> | All Rights Reserved</p>
+        </div>
+    </footer>
+    
+    <script src="../scripts/auth.js"></script>
+    <script src="../scripts/humbergerMenu.js"></script>
+    <script src="../scripts/ReasonCoding.js"></script>
+    <script src="../scripts/fetchVideos.js"></script>
+    <script src="../scripts/contacts.js"></script>
+    <script src="../scripts/frontend.js"></script>
+    <script src="../scripts/backend.js"></script>
+</body>
+</html>

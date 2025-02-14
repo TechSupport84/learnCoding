@@ -1,4 +1,5 @@
 .comment {
+    display: inline-block;
     background: none;
     border: none;
     cursor: pointer;

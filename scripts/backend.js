@@ -7,6 +7,7 @@ const backendCourses = [
     { id: 6, name: "C#", description: "Backend programming with C#", url: "https://www.youtube.com/embed/XluZzsulPqs", support: 5.99 },
 ];
 
+
 const pythonId = document.querySelector("#Python");
 const mongo = document.querySelector("#Mongodb");
 

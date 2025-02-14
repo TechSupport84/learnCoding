@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function showSuccessMessage() {
         let successMessage = document.createElement("span");
-        successMessage.textContent = "✅ Subscription successful!";
+        successMessage.textContent = " Subscription successful!";
         successMessage.style.color = "green";
         successMessage.style.fontWeight = "bold";
 
